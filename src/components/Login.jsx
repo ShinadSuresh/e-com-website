@@ -1,64 +1,63 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useRef } from 'react'
 import { Form, Button } from 'react-bootstrap';
+import { Link,NavLink, useNavigate } from 'react-router-dom';
 import { context } from './Context';
 
 
-const LoginPage = () => {
-      const loginContext = useContext(context) // context stored in loginContex 
-      const {input,setInput}=loginContext     // loginContext destrecute in {input,setInput}
+export const Login   = () => {
+  
+  const Navigate = useNavigate();
+  const Signupdata = useContext(context);
+  const {input} = Signupdata; // destrecutre input data
 
-      const userNameRef=useRef() // reference to variable used
-      const emailRef=useRef()
-      const passwordRef=useRef()
-
-      const handlesubmit= (e)=> {    //  input date converted using context to use state.
-          e.preventDefault() // prevent default reloading of page
-        const userName=userNameRef.current.value
-        const email=emailRef.current.value
-        const password=passwordRef.current.value
-        const id=Math.floor(Math.random()*100) // create unique id for product random
-
-        setInput([...input,{userName,email,password,id}]) //... values {userName,email,password} are spreaded to setInput state 
+  const myreff =useRef(null) 
+  const LoginValue = {  
+    email: '',
+    password: '',
+  }
 
 
-      }
+  const loginHandle =()=>{  // 
+    
+    const email =myreff.current.email.value;
+    const password = myreff.current.password.value
 
+    const filterData=input.filter((e)=>(e.email === email && e.password === password)) // email and password comapred and assigned to filterdata
+    if(filterData.length > 0){ 
+      Navigate('/')
+    }else{
+      alert('user not found')
+    }
+  }
+  
+
+  
   return (
-    <div className="d-flex justify-content-center align-items-center h-100" style={{ background: '#f7f7f7' }}>
-      <div className="login-container p-4" style={{ maxWidth: '600px', background: '#fff', borderRadius: '4px', boxShadow: '0px 0px 10px rgba(0,0,0,0.2)' }}>
+    <div className="d-flex justify-content-center align-items-center h-100" style={{ background: '#f7f7f7', padding: '8rem' }}>
+      <div className="login-container p-4" style={{ maxWidth: '600px', background: '#fff', borderRadius: '10px', boxShadow: '10px 0px 10px rgba(0,0,0,0.2)' }}>
         <h3 className="mb-4">Login</h3>
-        <Form onSubmit={handlesubmit}>
-          <Form.Group className="mb-3" controlId="formGroupEmail">
-            <Form.Label>user Name</Form.Label>
-            <Form.Control type="userName" placeholder="Enter name"  ref={userNameRef}/>
-          </Form.Group>
+        <div className="login-form">
+          <Form ref={myreff} onSubmit={ e => e.preventDefault()}>
+            <Form.Group className="mb-3" controlId="formGroupEmail">
+              <Form.Label>Email</Form.Label>
+              <Form.Control type="text" placeholder="Enter name" name='email' />
+            </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formGroupEmail">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" ref={emailRef} />
-          </Form.Group>
-          
-          <Form.Group className="mb-3" controlId="formGroupPassword">
-            <Form.Label >Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" ref={passwordRef}/>
-          </Form.Group>
+            <Form.Group className="mb-3" controlId="formGroupPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control type="password" placeholder="Password" name='password' />
+            </Form.Group>
 
-
-          <Form.Group controlId="formBasicCheckbox">
-            <Form.Check type="checkbox" label="Remember me" />
-          </Form.Group>
-          <Button variant="primary" type="submit" >
-            Login
-          </Button>
-        </Form>
+            <Button variant="primary" type="submit" className="mb-3" block onClick={loginHandle} >
+              Login
+            </Button>
+            <p className="text-center">Do you have an Account?</p>
+            <NavLink as={Link} to="/Signup" className="text-center">
+              Create Account
+            </NavLink>
+          </Form>
+        </div>
       </div>
     </div>
-
-
-    
-  );
-};
-
-export default LoginPage;
-
-
+  )
+}

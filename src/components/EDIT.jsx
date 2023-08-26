@@ -23,8 +23,7 @@ function EditProduct() {
     }
 
     
-    console.log(inputName);
-    console.log(edit);
+        
   return (
 
 <div>

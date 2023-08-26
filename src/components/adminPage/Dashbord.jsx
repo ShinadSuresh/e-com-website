@@ -41,10 +41,11 @@ function FormExample() {
     nav("/Edit/:id"); // navigation to edit page
   };
 
-  const mysearch = useRef()
-  const [searchs, setSearch] = useState([])
-console.log(searchs);
-  const handleSearch = () => {
+   const mysearch = useRef()
+    const [searchs, setSearch] = useState([])
+    
+
+   const handleSearch = () => {
     const searchInput = mysearch.current.value
     const productInput = state.map(item => item.name)
     if(productInput.includes(searchInput)){
@@ -113,7 +114,10 @@ console.log(searchs);
         </Form.Group>
         <Button type="submit">Submit</Button>
       </Form>
+
+      
       <br/>
+      
       <Form >
       <FormControl type="text" placeholder="Search" className="mr-sm-2" ref={mysearch} />
       <Button onClick={handleSearch} variant="outline-success">Search</Button><br/>

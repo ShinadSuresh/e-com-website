@@ -34,11 +34,10 @@ function BasicExample() {
               <Nav.Link href="#link">COLLECTION</Nav.Link>
               </NavLink>
 
-              <Nav.Link href="#link">LOOKBOOK</Nav.Link>
-              <Nav.Link href="#link">SALE</Nav.Link>
-
+              
+              
               <Nav className="justify-content-end" style={{}}>
-                <Nav.Link href="#link" className="mr-auto">OUR STORY</Nav.Link>
+                
                 <Nav.Link as={Link} to="/admin" className="mr-auto">Admins Only</Nav.Link>
                 <Nav.Link as={Link} to="/cart" className="ml-auto">
                    <FaShoppingCart />

@@ -1,14 +1,16 @@
-import { Button, Card, Col, Container, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 function Body() {
   return (
     <>
-      <Card className="bg-dark text-white" style={{width:'1500px'}}>
+      <Card className="bg-dark text-white" style={{ width: "1500px" }}>
         <Card.Img
           src="https://websitedemos.net/recycled-shoe-store-04/wp-content/uploads/sites/983/2021/11/recycled-shoe-store-hero-image-bg.jpg"
           alt="Hero"
+          style={{ maxWidth: "100%", height: "auto" }} // Inline styles for responsiveness
         />
+
         <Card.ImgOverlay className="d-flex align-items-center justify-content-start">
           <Container>
             <Row>
@@ -27,7 +29,7 @@ function Body() {
                       Shop Men
                     </Button>
                   </Link>
-                  {'  '}
+                  {"  "}
                   <Link to="/ShopWomen">
                     <Button variant="light" size="lg" className="px-5">
                       Shop Women

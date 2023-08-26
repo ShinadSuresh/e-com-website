@@ -13,13 +13,14 @@ const Collection = () => {
 const {state,setState}=useContext(context)
 
 const RemoveItem = (e) => {
-    const removeItem = parseInt(e.target.id);  // used for convert string to number
+    const removeItem = parseInt(e.target.id);    // used for convert string to number
     setState(state.filter((item) => item.id !== removeItem)); } 
 
 
   return (
-    
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(18rem, 1fr))', gap: '2rem' }}>
+
+
   {Products.map((item)=>(
     
     <Card>
@@ -35,6 +36,8 @@ const RemoveItem = (e) => {
   ))}
 
   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(18rem, 1fr))', gap: '2rem' }}>
+
+
   {state.map((item)=>(
     
     <Card key={item.id}>

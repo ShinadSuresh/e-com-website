@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
 function ViewDetails() {
 
     const addCart=useContext(context);
-    const {cart,setCart,state,setState}=addCart;
+    const {cart,setCart}=addCart;
     const nav=useNavigate()
     
     const Carts = ()=> {
@@ -20,7 +20,7 @@ function ViewDetails() {
             alert("added sucessfully")
             nav('/cart')
 
-            console.log(cart);
+            
 
     }
 
